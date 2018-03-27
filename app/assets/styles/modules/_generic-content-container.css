@@ -1,8 +1,9 @@
 .generic-content-container {
 	
 	p { 									 /* We create a new rule to select any p nested inside the class*/
+		font-weight: 300;
 		line-height: 1.65; 		/*line-height doesn't require a unit of measurement */
-		margin: 1.8rem 0;
+		margin: 0 0 1.8rem 0;
 		
 		@mixin atSmall {
 			font-size: 1.125rem;

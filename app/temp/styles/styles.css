@@ -693,8 +693,16 @@ a {
 
 /* code to clear floats and fake content so the div knows how tall it is. Created a mixin to re-use the code */
 
+.row--gutters-large {
+		margin-right: -100px;
+	}
+
 .row--gutters > div { /* select direct children divs inside the class (our 2 row divs __4 and __8) */
 		padding-right: 65px;  /* add padding on the right of both divs inside the row (see comment above for delating 2nd divs padding)*/
+	}
+
+.row--gutters-large > div {
+		padding-right: 100px;
 	}
 
 .row__b-margin-until-medium {
@@ -718,8 +726,13 @@ a {
 		float: left;
 		width: 33.33%;
 		}		
-		.row__medium-4-larger { 
+		.row__medium-4--larger { 
 			width: 37%;
+		}
+		
+		.row__medium-6 {
+			float: left;
+			width: 50%;
 		}
 	
 		.row__medium-8 {
@@ -733,8 +746,9 @@ a {
 	}
 
 .generic-content-container p { 									 /* We create a new rule to select any p nested inside the class*/
+		font-weight: 300;
 		line-height: 1.65; 		/*line-height doesn't require a unit of measurement */
-		margin: 1.8rem 0;
+		margin: 0 0 1.8rem 0;
 	}
 
 @media (min-width: 530px) {
@@ -746,4 +760,80 @@ a {
 
 .generic-content-container p a {  							/* select every a nested in p nested in the class */
 		font-weight: 700;  	/* a nomal font-weight is 400 */
+	}
+
+.section-title {
+	font-size: 2.55rem;
+	font-weight: 300;
+	text-align: center;
+}
+
+@media (min-width: 530px) {
+
+.section-title {
+		font-size: 3.75rem
+}
+	}
+
+.section-title strong {
+		font-weight: 500;
+	}
+
+.section-title__icon {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: .6rem;
+	}
+
+@media (min-width: 530px) {
+
+.section-title__icon {
+			margin-right: .5rem;
+			margin-left: 0;
+			display: inline-block;
+			margin-bottom: 0
+	}
+	}
+
+.feature-item {
+	position: relative;
+	padding-bottom: 2.5rem;
+}
+
+@media (min-width: 530px) {
+
+.feature-item {
+		padding-left: 94px
+}
+	}
+
+.feature-item__icon {
+		display: block;
+		margin: 0 auto;
+	}
+
+@media (min-width: 530px) {
+
+.feature-item__icon {
+			position: absolute;
+			left: 0
+	}
+	}
+
+.feature-item__title {
+		font-size: 1.6rem;
+		font-weight: 300;
+		margin-top: .7em;
+		margin-bottom: .8rem;
+		text-align: center;
+	}
+
+@media (min-width: 530px) {
+
+.feature-item__title {
+			font-size: 1.875rem;
+			margin-top: 1em;
+			text-align: left
+	}
 	}

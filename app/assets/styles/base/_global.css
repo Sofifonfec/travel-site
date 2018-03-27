@@ -1,0 +1,17 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+* {		/* universal selector to apply on all elements */
+	box-sizing: border-box;   /* to include border and padding inside the box and reset all default values of browsers */
+}
+
+a {
+	color: $mainOrange;
+}

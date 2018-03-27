@@ -1,0 +1,28 @@
+/* Creating reusable blocks 
+ This page takes care of styling horizontaly our blocks. Here we center the content and add max-width */
+
+.wrapper {
+	overflow: hidden;  /* to hide the negative margin created in the _row file */
+	padding-left: 18px;
+	padding-right: 18px;
+	max-width: 1236px; /*attention to details as we're using border box we include the paddings in the width 18+18 = 36px */
+	margin-left: auto;
+	margin-right: auto;
+	
+	&--medium {
+		max-width: 976px;
+	}
+	
+	.wrapper {    /* any wrapper nested inside another wrapper should no longer have any horizontal padding*/
+		padding-left: 0;  /* We will still have 18px of padding as it's nested within a wrapper but we won't have the extra 18px*/
+		padding-right: 0;
+	}
+	
+	&--b-margin {
+		margin-bottom: 1rem;
+		
+		@mixin atSmall {
+			margin-bottom: 3.875rem;
+		}
+	}
+}

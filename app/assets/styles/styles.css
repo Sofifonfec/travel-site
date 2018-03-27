@@ -1,0 +1,14 @@
+/* Imports all the sub-css files in the main css file
+WARNING It is important to create the imports following the root of the whole tree structure (files in the base folder before files in the modules folder for example */
+
+@import "normalize.css";
+@import "base/_variables";
+@import "base/_mixins";
+@import "base/_global";
+@import "modules/_large-hero";
+@import "modules/_btn";
+@import "modules/_wrapper";
+@import "modules/_page-section";
+@import "modules/_headline";
+@import "modules/_row";
+@import "modules/_generic-content-container";

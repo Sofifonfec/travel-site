@@ -7,8 +7,16 @@
 		margin-right: -65px;
 	}
 	
+	&--gutters-large {
+		margin-right: -100px;
+	}
+	
 	&--gutters > div { /* select direct children divs inside the class (our 2 row divs __4 and __8) */
 		padding-right: 65px;  /* add padding on the right of both divs inside the row (see comment above for delating 2nd divs padding)*/
+	}
+	
+	&--gutters-large > div {
+		padding-right: 100px;
 	}
 	
 	&__b-margin-until-medium {
@@ -28,8 +36,13 @@
 		}
 
 /* We want to make the 'column img' larger and the 'column text' smaller, instead of changing the size directly with the initial class we create a class modifier. This way we can reuse the original width of 33% in the testimonials section */		
-		&__medium-4-larger { 
+		&__medium-4--larger { 
 			width: 37%;
+		}
+		
+		&__medium-6 {
+			float: left;
+			width: 50%;
 		}
 	
 		&__medium-8 {

@@ -2,6 +2,10 @@
 	
 	@mixin clearfix; /* code to clear floats and fake content so the div knows how tall it is. Created a mixin to re-use the code */
 	
+	&--t-padding {
+		padding-top: 80px;
+	}
+	
 /* create a negative margin that equals the padding of the children elements to make the row 65px widder than it should be. The goal is to hide the right padding on the 2nd block of the row (we use it in combinason with overflow in the _wrapper file */ 	
 	&--gutters {
 		margin-right: -65px;
@@ -11,12 +15,20 @@
 		margin-right: -100px;
 	}
 	
+	&--gutters-small {
+		margin-right: -45px;
+	}
+	
 	&--gutters > div { /* select direct children divs inside the class (our 2 row divs __4 and __8) */
 		padding-right: 65px;  /* add padding on the right of both divs inside the row (see comment above for delating 2nd divs padding)*/
 	}
 	
 	&--gutters-large > div {
 		padding-right: 100px;
+	}
+	
+	&--gutters-small > div {
+		padding-right: 45px;
 	}
 	
 	&__b-margin-until-medium {
@@ -54,4 +66,61 @@
 			width: 63%;
 		}
 	}
+	
+	@mixin atLarge {  
+		
+		&__b-margin-until-large {
+			margin-bottom: 0;				/*delate margin for  large screens*/
+		}
+		
+		&__large-4 {
+		float: left;
+		width: 33.33%;
+		}
+
+/* We want to make the 'column img' larger and the 'column text' smaller, instead of changing the size directly with the initial class we create a class modifier. This way we can reuse the original width of 33% in the testimonials section */		
+		&__large-4--larger { 
+			width: 37%;
+		}
+		
+		&__large-6 {
+			float: left;
+			width: 50%;
+		}
+	
+		&__large-8 {
+			float: left;
+			width: 66.66%;
+		}
+		
+		&__large-8--smaller {
+			width: 63%;
+		}
+	}
+	
+	/* Begin Equal Height Rules */
+	&--equal-height-at-medium {
+		@mixin atMedium {
+			display: flex;
+		}
+		
+		& > div {   /* Target the divs inside the & class modifier */
+			float: none;
+			display: flex;
+		}
+		
+	}
+	
+	&--equal-height-at-large {
+		@mixin atLarge {
+			display: flex;
+		}
+		
+		& > div {   /* Target the divs inside the & class modifier */
+			float: none;
+			display: flex;
+		}
+		
+	}
+	
 }

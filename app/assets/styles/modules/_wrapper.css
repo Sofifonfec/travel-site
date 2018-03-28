@@ -13,6 +13,26 @@
 		max-width: 976px;
 	}
 	
+	&--no-padding-until-medium {
+		padding-left: 0;
+		padding-right: 0;
+		
+		@mixin atMedium {
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
+	
+	&--no-padding-until-large {
+		padding-left: 0;
+		padding-right: 0;
+		
+		@mixin atLarge {
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
+	
 	.wrapper {    /* any wrapper nested inside another wrapper should no longer have any horizontal padding*/
 		padding-left: 0;  /* We will still have 18px of padding as it's nested within a wrapper but we won't have the extra 18px*/
 		padding-right: 0;

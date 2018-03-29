@@ -13,13 +13,13 @@
 	}
 	
 	&__photo {
-		border-radius: 80px;
-		overflow: hidden;
-		width: 160px;
-		height: 160px;
-		margin: 0 auto -80px auto;
-		position: relative;
-		top: -80px;
+		border-radius: 80px;	/* the pic has a width of 160px so we take its half to make it round */
+		overflow: hidden;	/* The pic is allowed to overflow outside the edges of the div so need to hide overflow to see border-radius */
+		width: 160px;		/*The image takes the full width of the div so need to set the width and height of the div to create the circle*/
+		height: 160px;		/* We set it as the exact size of the picture 160x160px */
+		margin: 0 auto -80px auto; /* Center the picture, bottom is -80 to let the content below know that the image is now up 80px*/
+		position: relative;	/* To pull the image up by half of its size = 80px */
+		top: -80px;				/* Same if we use 'bottom: 80px;' */
 		border: 6px solid rgba(255, 255, 255, .8);
 	}
 	

@@ -1,5 +1,5 @@
 /* Creating reusable blocks 
- This page takes care of styling verticaly our blocks */
+ This page takes care of styling verticaly our blocks. (Add padding bottom to separate blocks etc.)  */
 
 .page-section {
 	padding: 1.2rem 0;
@@ -30,10 +30,10 @@
 	}
 	
 	&--testimonials {
-		background-color: #e0e6ef;
+		background-color: #e0e6ef;	/* No background-image for small and medium screens */	
 		
-		@mixin atLarge {
-			background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+		@mixin atLarge {		/* background-image only for large screens */
+			background: url('/assets/images/testimonials-bg.jpg') top center no-repeat; 
 			background-size: cover;
 		}
 		

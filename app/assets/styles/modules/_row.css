@@ -1,3 +1,7 @@
+/* Create column layout blocks: 
+1) wrap all the content inside one div named row 
+2) create divs according to the nb of columns we want and wrap the content of each column inside each div. Think of our rows in terms of a 12 column grid and check how much width of the grid each column should take. Then create class names according to the nb of rows it will take (row__4) */
+
 .row {
 	
 	@mixin clearfix; /* code to clear floats and fake content so the div knows how tall it is. Created a mixin to re-use the code */
@@ -19,7 +23,7 @@
 		margin-right: -45px;
 	}
 	
-	&--gutters > div { /* select direct children divs inside the class (our 2 row divs __4 and __8) */
+	&--gutters > div { 			/* select direct children divs inside the class (our 2 row divs __4 and __8) */
 		padding-right: 65px;  /* add padding on the right of both divs inside the row (see comment above for delating 2nd divs padding)*/
 	}
 	
@@ -42,7 +46,7 @@
 			margin-bottom: 0;				/*delate margin for medium and larger screens*/
 		}
 		
-		&__medium-4 {
+		&__medium-4 {	/* The column takes 1/3rd of the 12 column grid so approx. 4 rows */
 		float: left;
 		width: 33.33%;
 		}
@@ -52,12 +56,12 @@
 			width: 37%;
 		}
 		
-		&__medium-6 {
+		&__medium-6 {		/* Half of the 12 column grid */
 			float: left;
 			width: 50%;
 		}
 	
-		&__medium-8 {
+		&__medium-8 { 		/* Takes 2/3rd of the 12 column grid */
 			float: left;
 			width: 66.66%;
 		}

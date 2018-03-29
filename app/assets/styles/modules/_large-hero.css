@@ -1,3 +1,5 @@
+/* Styles the top banner with text and large blue border-bottom */
+
 .large-hero {
 	position: relative;
 	border-bottom: 10px solid $mainBlue;

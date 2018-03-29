@@ -465,7 +465,7 @@ img {
 	height: auto;
 }
 
-* {		/* universal selector to apply on all elements */
+* {										 /* universal selector to apply on all elements */
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;   /* to include border and padding inside the box and reset all default values of browsers */
 }
@@ -473,6 +473,8 @@ img {
 a {
 	color: #d59541;
 }
+
+/* Styles the top banner with text and large blue border-bottom */
 
 .large-hero {
 	position: relative;
@@ -612,8 +614,8 @@ a {
 	}
 	}
 
-.wrapper .wrapper {    /* any wrapper nested inside another wrapper should no longer have any horizontal padding*/
-		padding-left: 0;  /* We will still have 18px of padding as it's nested within a wrapper but we won't have the extra 18px*/
+.wrapper .wrapper {    			/* Any wrapper nested inside another wrapper should no longer have any horizontal padding*/
+		padding-left: 0;   /* We will still have 18px of padding as it's nested within a wrapper but we won't have the extra 18px*/
 		padding-right: 0;
 	}
 
@@ -629,7 +631,7 @@ a {
 	}
 
 /* Creating reusable blocks 
- This page takes care of styling verticaly our blocks */
+ This page takes care of styling verticaly our blocks. (Add padding bottom to separate blocks etc.)  */
 
 .page-section {
 	padding: 1.2rem 0;
@@ -676,10 +678,12 @@ a {
 		
 	}
 
+/* No background-image for small and medium screens */
+
 @media (min-width: 1010px) {
 
-.page-section--testimonials {
-			background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+.page-section--testimonials {		/* background-image only for large screens */
+			background: url('/assets/images/testimonials-bg.jpg') top center no-repeat; 
 			background-size: cover
 		
 	}
@@ -741,6 +745,10 @@ a {
 		margin-top: 0;		/*eliminate the top margin of the headline*/
 	}
 
+/* Create column layout blocks: 
+1) wrap all the content inside one div named row 
+2) create divs according to the nb of columns we want and wrap the content of each column inside each div. Think of our rows in terms of a 12 column grid and check how much width of the grid each column should take. Then create class names according to the nb of rows it will take (row__4) */
+
 /* when using float -> code to create fake content and clear floats*/
 
 .row::after {
@@ -769,7 +777,7 @@ a {
 		margin-right: -45px;
 	}
 
-.row--gutters > div { /* select direct children divs inside the class (our 2 row divs __4 and __8) */
+.row--gutters > div { 			/* select direct children divs inside the class (our 2 row divs __4 and __8) */
 		padding-right: 65px;  /* add padding on the right of both divs inside the row (see comment above for delating 2nd divs padding)*/
 	}
 
@@ -799,7 +807,7 @@ a {
 			margin-bottom: 0;				/*delate margin for medium and larger screens*/
 		}
 		
-		.row__medium-4 {
+		.row__medium-4 {	/* The column takes 1/3rd of the 12 column grid so approx. 4 rows */
 		float: left;
 		width: 33.33%;
 		}		
@@ -807,12 +815,12 @@ a {
 			width: 37%;
 		}
 		
-		.row__medium-6 {
+		.row__medium-6 {		/* Half of the 12 column grid */
 			float: left;
 			width: 50%;
 		}
 	
-		.row__medium-8 {
+		.row__medium-8 { 		/* Takes 2/3rd of the 12 column grid */
 			float: left;
 			width: 66.66%;
 		}
@@ -893,9 +901,11 @@ a {
 			display: flex;
 		}
 
-.generic-content-container p { 									 /* We create a new rule to select any p nested inside the class*/
+/* To create a generic style for paragraphs and links (font-size, font-weight, line-height, margin */
+
+.generic-content-container p { 									 /* We create a new rule to select any p nested inside the class generic-content-container*/
 		font-weight: 300;
-		line-height: 1.65; 		/*line-height doesn't require a unit of measurement */
+		line-height: 1.65; 		/* Line-height doesn't require a unit of measurement */
 		margin: 0 0 1.8rem 0;
 	}
 
@@ -906,9 +916,11 @@ a {
 	}
 	}
 
-.generic-content-container p a {  							/* select every a nested in p nested in the class */
+.generic-content-container p a {  							/* Select every 'a' nested in 'p' nested in the class */
 		font-weight: 700;  	/* a nomal font-weight is 400 */
 	}
+
+/* Styles section-title -> Our Features and Real Testimonials */
 
 .section-title {
 	font-size: 2.55rem;
@@ -918,7 +930,7 @@ a {
 
 @media (min-width: 530px) {
 
-.section-title {
+.section-title {          /* Increase font-size for all screens bigger than 530px */
 		font-size: 3.75rem
 }
 	}
@@ -949,6 +961,8 @@ a {
 			margin-bottom: 0
 	}
 	}
+
+/* Style the 4 items inside the section features (icon + title h3 + p) */
 
 .feature-item {
 	position: relative;
@@ -1013,13 +1027,13 @@ a {
 	}
 
 .testimonial__photo {
-		border-radius: 80px;
-		overflow: hidden;
-		width: 160px;
-		height: 160px;
-		margin: 0 auto -80px auto;
-		position: relative;
-		top: -80px;
+		border-radius: 80px;	/* the pic has a width of 160px so we take its half to make it round */
+		overflow: hidden;	/* The pic is allowed to overflow outside the edges of the div so need to hide overflow to see border-radius */
+		width: 160px;		/*The image takes the full width of the div so need to set the width and height of the div to create the circle*/
+		height: 160px;		/* We set it as the exact size of the picture 160x160px */
+		margin: 0 auto -80px auto; /* Center the picture, bottom is -80 to let the content below know that the image is now up 80px*/
+		position: relative;	/* To pull the image up by half of its size = 80px */
+		top: -80px;				/* Same if we use 'bottom: 80px;' */
 		border: 6px solid rgba(255, 255, 255, .8);
 	}
 
@@ -1037,4 +1051,83 @@ a {
 		font-weight: 400;
 		font-size: 0.9375rem;
 		margin: .25rem 0 1rem 0;
+	}
+
+/* Do not edit modules/_sprite directly as it is generated automatically by Gulp 
+Instead edit gulp/templates/sprite */
+
+.icon {
+			background-image: url('/assets/images/sprites/sprite-69f19c2e.svg');
+		}
+
+.icon--clear-view-escapes {
+		width: 142.4px;
+		height: 59.53px;
+		background-position: 0 0;
+	}
+
+.icon--comment {
+		width: 64px;
+		height: 64px;
+		background-position: 99.70443349753694% 0;
+	}
+
+.icon--facebook {
+		width: 21.23px;
+		height: 42.01px;
+		background-position: 26.040607071652357% 45.795830448496034%;
+	}
+
+.icon--fire {
+		width: 56px;
+		height: 64px;
+		background-position: 0 99.56481481481481%;
+	}
+
+.icon--globe {
+		width: 64px;
+		height: 64px;
+		background-position: 27.586206896551722% 99.56481481481481%;
+	}
+
+.icon--instagram {
+		width: 42.01px;
+		height: 42.01px;
+		background-position: 63.2917018534157% 49.234556504346486%;
+	}
+
+.icon--mail {
+		width: 64px;
+		height: 48px;
+		background-position: 0 48.00806451612903%;
+	}
+
+.icon--rain {
+		width: 64px;
+		height: 64px;
+		background-position: 99.70443349753694% 59.25925925925926%;
+	}
+
+.icon--star {
+		width: 64px;
+		height: 64px;
+		background-position: 59.11330049261084% 99.56481481481481%;
+	}
+
+.icon--twitter {
+		width: 51.78px;
+		height: 42.06px;
+		background-position: 94.04330452560171% 98.50700323226104%;
+	}
+
+.icon--wifi {
+		width: 60px;
+		height: 64px;
+		background-position: 68.79227053140097% 0;
+	}
+
+.icon--youtube {
+		width: 34.75px;
+		height: 42px;
+		background-position: 36.69752421959096% 45.792307692307695%;
 	}

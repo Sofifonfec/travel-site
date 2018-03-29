@@ -1,9 +1,11 @@
+/* Styles section-title -> Our Features and Real Testimonials */
+
 .section-title {
 	font-size: 2.55rem;
 	font-weight: 300;
 	text-align: center;
 	
-	@mixin atSmall {
+	@mixin atSmall {          /* Increase font-size for all screens bigger than 530px */
 		font-size: 3.75rem;
 	}
 	

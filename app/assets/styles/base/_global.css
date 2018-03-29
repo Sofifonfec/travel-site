@@ -8,7 +8,7 @@ img {
 	height: auto;
 }
 
-* {		/* universal selector to apply on all elements */
+* {										 /* universal selector to apply on all elements */
 	box-sizing: border-box;   /* to include border and padding inside the box and reset all default values of browsers */
 }
 

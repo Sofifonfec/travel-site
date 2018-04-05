@@ -5,10 +5,11 @@ var cssvars = require('postcss-simple-vars'); //plugin to let us create variable
 var nested = require('postcss-nested'); //plugin to let us nest our CSS code 
 var cssImport = require('postcss-import'); //to import other plugins or files 
 var mixins = require('postcss-mixins');  //to simplify media queries
+var hexrgba = require('postcss-hexrgba'); //convert rgba code to hex
 
 gulp.task('styles', function() {
 	return gulp.src('./app/assets/styles/styles.css')
-		.pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer]))
+		.pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
 		.on('error', function(errorInfo) {        
 			console.log(errorInfo.toString()); 
 			this.emit('end');

@@ -1,0 +1,127 @@
+.site-header {
+	position: absolute;  		/* To overlap with the large-hero section */
+	width: 100%;
+	z-index: 2;					/* To make the content appear on the large-hero section*/
+	padding: 10px 0;
+	transition: background-color .3s ease-out;  /* create a transition for the background-color when we expand the menu*/
+	
+	&--is-expanded {  /* add a semi-transparent background-color when the menu is expanded*/
+		background-color: rgba($mainBlue, .55);
+	}
+	
+	@mixin atMedium {
+		background-color: rgba($mainBlue, .3);
+	}
+	
+	&__btn-container {
+		@mixin atMedium {
+			float: right;
+		}
+	}
+	
+	&__logo {
+		position: absolute;
+		top: 0;    		/* To counter the site-header padding of 10px */
+		left: 50%;
+		transform: translateX(-50%) scale(.8); /* scale used to shrunk the logo on small screens */
+		transform-origin: 50% 0; /* to avoid the top gap created by scale; the top center is now the origin point of the logo */
+		background-color: $mainBlue;
+		padding: 25px 36px;
+		
+		@mixin atMedium {
+			left: auto;
+			transform: translateX(0);
+		}
+	}
+	
+	&__logo__graphic {	/* Code to hide the company name (text not logo) */
+		text-indent: -9999px;
+	}
+	
+	&__menu-icon {  	/* Create icon menu on small screens */
+		width: 20px;
+		height: 19px;
+		position: absolute;
+		z-index: 10;   /* To be able to close the menu when we click on the icon again */
+		top: 10px;
+		right: 10px;
+		
+		&::before {  /* 1st bar*/
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 20px;
+			height: 3px;
+			background-color: #FFF;
+			transform-origin: 0 0;
+			transition: transform .3s ease-out;
+		}
+		
+		&__middle {  /* 2nd bar */
+			position: absolute;
+			top: 8px;
+			left: 0;
+			width: 20px;
+			height: 3px;
+			background-color: #FFF;
+			transition: all .3s ease-out;
+			transform-origin: 0 50%;
+		}
+		
+		&::after {  /* 3rd bar */
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 20px;
+			height: 3px;
+			background-color: #FFF;
+			transform-origin: 0 100%;
+			transition: transform .3s ease-out;
+		}
+		
+		@mixin atMedium {		/* Hide the icon menu on larger screens */
+			display: none;   
+		}
+	}
+	
+	&__menu-icon--close-x {  /* target the horizontal bars to create the X */
+		&::before {
+			transform: rotate(45deg) scaleX(1.25);  /* to rotate the top bar */
+		}
+		
+		.site-header__menu-icon__middle {  /* to hide the middle bar */
+			opacity: 0;
+			transform: scaleX(0);
+		}
+		
+		&::after {
+			transform: rotate(-45deg) scaleX(1.25) translateY(1px);  /* to rotate the last bar */
+		}
+	}
+	
+	&__menu-content {
+		opacity: 0;
+		transform: scale(1.2);
+		transition: all .3s ease-out;
+		position: relative;  /* add position for z-index to work in the browser */
+		z-index: -10;		/* negative z-index to put the content behind other content not to be clicked accidentally*/
+		padding-top: 90px;
+		text-align: center;
+		
+		@mixin atMedium {
+			opacity: 1;
+			z-index: 1;
+			padding-top: 0;
+			transform: scale(1);
+		}
+		
+		&--is-visible {  /* We add a modifier class to target the new class created with JS when the icon menu is clicked*/
+			opacity: 1;
+			z-index: 1;  /* To make the content visible again (vs. -10) */
+			transform: scale(1);
+		}
+	}
+	
+}

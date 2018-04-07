@@ -4,27 +4,9 @@
 */
 
 import MobileMenu from './modules/MobileMenu';
+import RevealOnScroll from './modules/RevealOnScroll';
+import $ from 'jquery';
 
 var mobileMenu = new MobileMenu();
-
-
-/*
-var $ = require('jquery');
-//var Person = require('./modules/Person'); //With Babel we can import modules using import (code below). Same for exports (see file Person.js)
-import Person from './modules/Person';
-
-class Adult extends Person {   //Adult will inherit all of the Person properties and add new specific ones like payTaxes
-	payTaxes() {
-		console.log(this.name + ' now owes $0 in taxes');
-	}
-}
-
-alert('Fat test');
-
-var john = new Person("John", "blue");
-john.greet();
-
-var jane = new Adult("Jane", "orange");
-jane.greet();
-jane.payTaxes();
-*/
+new RevealOnScroll($(".feature-item"), "85%");
+new RevealOnScroll($(".testimonial"), "60%");

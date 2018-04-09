@@ -2,10 +2,13 @@ var path = require("path");  //we want to create an absolute path for the bundle
 
 // We create an object to tell webpack what to do.
 module.exports = {
-	entry: "./app/assets/scripts/App.js",  //we tell webpack which file it should be looking at to create the bundle (main App.js file)
+	entry: {
+		App:  "./app/assets/scripts/App.js",  //we tell webpack which file it should be looking at to create the bundle (main App.js file)
+		Vendor:  "./app/assets/scripts/Vendor.js"
+	},
 	output: {												//we tell where the bundle should be created	
 		path: path.resolve(__dirname, "./app/temp/scripts"),  //generate an absolute path to this directory
-		filename: "App.js"					//control the name of the bundle file
+		filename: "[name].js"					//control the name of the bundle file (dynamic)
 	},
 	module: {
 		loaders: [

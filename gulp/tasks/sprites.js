@@ -1,11 +1,24 @@
 var gulp = require('gulp'),
 svgSprite = require('gulp-svg-sprite'),
 rename = require('gulp-rename'),
-del = require('del');
+del = require('del'),
+svg2png = require('gulp-svg2png');
 
 var config = {
+	shape: {
+		spacing: {
+			padding: 1
+		}
+	},
 	mode: {
 		css: {
+			variables: {
+				replaceSvgWithPng: function()  {
+					return function(sprite, render) {
+						return render(sprite).split('.svg').join('.png');
+					}
+				}
+			},
 			sprite: 'sprite.svg',     //change the auto-generated background image url
 			render: {
 				css: {
@@ -26,8 +39,15 @@ gulp.task('createSprite', ['beginClean'], function() {	  // We add a dependency 
 		.pipe(gulp.dest('./app/temp/sprite/'));
 });
 
-gulp.task('copySpriteGraphic', ['createSprite'], function() {
-	return gulp.src('./app/temp/sprite/css/**/*.svg')  // allows us to acess any sub-folders and grab any files with an .svg extension
+// We create a png copy of our svg icon file for old browsers
+gulp.task('createPngCopy', ['createSprite'], function() {
+	return gulp.src('./app/temp/sprite/css/*.svg')
+		.pipe(svg2png())
+		.pipe(gulp.dest('./app/temp/sprite/css'));
+});
+
+gulp.task('copySpriteGraphic', ['createPngCopy'], function() {
+	return gulp.src('./app/temp/sprite/css/**/*.{svg, png}')  // acess any sub-folders and grab any files with an .svg or .png extension
 		.pipe(gulp.dest('./app/assets/images/sprites'));
 });
 
@@ -43,5 +63,5 @@ gulp.task('endClean', ['copySpriteGraphic', 'copySpriteCSS'],  function() {
 });
 
 // we create a new task to automatically run the 2 other tasks above. So we don't have to run 2 but only 1 task in comand line
-gulp.task('icons', ['beginClean', 'createSprite', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);  
+gulp.task('icons', ['beginClean', 'createSprite', 'createPngCopy', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);  
 

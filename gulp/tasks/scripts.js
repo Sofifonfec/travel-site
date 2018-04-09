@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
 webpack = require('webpack');
 
-gulp.task('scripts', function(callback) {  //we create a task to run webpack automatically
+gulp.task('scripts', ['modernizr'], function(callback) {  //we create a task to run webpack automatically
 	webpack(require('../../webpack.config.js'), function(err, stats) {
 		if (err) {
 			console.log(err.toString());
